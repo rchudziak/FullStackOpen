@@ -58,11 +58,10 @@ const App = () => {
     }
 
     const calculatePositive = () => {
-        const calc = (good / (good + neutral + bad)) * 100;
-        return `${calc} %`;
-    };
-
-
+     const calc =   ( good / (good + neutral + bad) ) * 100;
+     return `${calc} %`;
+    } ;
+    
     if (allClicks.length > 0) {
         return (
             <div>
