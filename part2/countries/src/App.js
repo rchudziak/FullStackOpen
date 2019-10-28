@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
-function App() {
+
+const App = () => {
+  const [countries, setCountries] = useState([])
+  const [countriesToShow, setCountriesToShow] = useState([])
+
+  useEffect(() => {
+    axios
+      .get('https://restcountries.eu/rest/v2/all')
+      .then(response => {
+        setCountries(response.data);
+      })
+  }, [])
+
+
+const searchCountry = (event) =>{
+
+}
+
+
+
   return (
     <div >
-      find countries <input />
+      find countries <input onChange={searchCountry} />
+      <div></div>
     </div>
   );
 }
