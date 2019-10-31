@@ -23,32 +23,38 @@ const App = () => {
     )
   }
 
+
+  const showCountryDetails = (countryToShow) => {
+    console.log(countryToShow)
+    return (<div>
+      <h1>{countryToShow.name}</h1>
+      <div>Capital: {countryToShow.capital}</div>
+      <div>Population: {countryToShow.population}</div>
+      <h1>languages</h1>
+      {showLanguages(countryToShow.languages)}
+      <img src={countryToShow.flag} width="200" height="200"></img>
+    </div>
+    )
+  }
+
   const showCountries = () => {
 
     if (filter.length > 0) {
       const countriesToShow = countries.filter(country => country.name.includes(filter))
 
       if (countriesToShow.length === 1) {
-        const countryToShow = countriesToShow[0];
-        return (<div>
-          <h1>{countryToShow.name}</h1>
-          <div>Capital: {countryToShow.capital}</div>
-          <div>Population: {countryToShow.population}</div>
-          <h1>languages</h1>
-          {showLanguages(countryToShow.languages)}
-          <img src={countryToShow.flag} width="200" height="200"></img>
-        </div>
-        )
+        return showCountryDetails(countriesToShow[0])
       }
 
       if (countriesToShow.length <= 10) {
-        return countriesToShow.map(country => <div key={country.alpha2Code}>{country.name}</div>)
+        return countriesToShow.map(country =>
+          <div key={country.alpha2Code}>{country.name}
+            <button onClick={() => setFilter(country.name)}>show</button>
+          </div>)
       } else {
         return <div>Too many matches, specify another filter</div>
       }
-
     }
-
   }
 
 
