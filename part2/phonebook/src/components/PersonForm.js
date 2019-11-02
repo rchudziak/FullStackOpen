@@ -1,7 +1,7 @@
 import React from 'react'
 import personsService from '../services/persons'
 
-const PersonForm = ({ setNewName, newName, setNewNumber, newNumber, setPersons, persons }) => {
+const PersonForm = ({ setNewName, newName, setNewNumber, newNumber, setPersons, persons, setMessage }) => {
 
     const handleNameChange = (event) => {
         setNewName(event.target.value)
@@ -35,6 +35,14 @@ const PersonForm = ({ setNewName, newName, setNewNumber, newNumber, setPersons, 
             .create(personObject)
             .then(person => {
                 setPersons(persons.concat(person))
+
+                setMessage(
+                    {
+                        type: 'S',
+                        text: `Person ${person.name} has been added`
+                    }
+                )
+
                 setNewName('')
                 setNewNumber('')
             })
