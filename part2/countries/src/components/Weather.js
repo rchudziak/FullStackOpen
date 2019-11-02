@@ -21,12 +21,8 @@ const Weather = ({ capital }) => {
   }, [])
 
   if (!weather) {
-    return (
-      <div></div>
-    )
+    return null
   }
-
-
   return (
 
     <div>
