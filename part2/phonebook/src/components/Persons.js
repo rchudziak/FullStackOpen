@@ -14,7 +14,6 @@ const Persons = ({persons, setPersons, filter}) => {
         }
     }
 
-
     const showNumbers = () => {
         const peopleToShow = persons.filter(person => person.name.toUpperCase().includes(filter.toUpperCase()))
         return peopleToShow.map((person) => <div key={person.id}>{person.name} {person.number}<button onClick={() => deletePerson(person)}>Delete</button></div>)
